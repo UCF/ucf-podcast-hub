@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "ucf-podcast-hub-dev"
+    "default": "ucf-podcast-hub-dev",
+    "develop": "ucf-podcast-hub-dev",
+    "test": "ucf-podcast-hub-test"
   }
 }
