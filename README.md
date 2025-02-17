@@ -1,50 +1,26 @@
 # UCF Podcast Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The UCF Podcast Hub project is a Firebase-backed React project for aggregating and displaying podcast content created at the University of Central Florida. It utilizes various Firebase components to store the podcast data, allow access for administrators to edit certain pieces of information, and caches the show images and audio files. To run this project locally, you can take advantage of the `firebase-tools` package included in the developer dependencies to emulate the Firebase products. However, you want to run this on Firebase, you will need to create a project and activate the following features:
 
-Currently, two official plugins are available:
+- Authentication
+- Firestore
+- Storage
+- Hosting
+- Functions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Local Dependencies
 
-## Expanding the ESLint configuration
+- NodeJS 18
+- JRE 11+ (for firebase emulators)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Project Setup
 
-- Configure the top-level `parserOptions` property like this:
+1. Clone the project into your desired dev directory and cd into the directory: `git clone git@github.com:UCF/ucf-podcast-hub.git` - `cd ucf-podcast-hub`.
+2. Ensure you're running Node 18. If using nvm, install and/or switch to 18: `nvm install 18 && nvm use 18`.
+3. Install dependencies: `npm install`.
+4. Select the develop project - this is necessary for the emulators to work correctly - by running the command: `npm run activate:dev`.
+5. Start the development server by running `npm run dev`. This will run the project in watch mode, rebuilding the project whenever a file changes.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Local Data
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Data for the local emulators is stored in the `localdata` directory. These files should never be tracked, as they act as a local cache of data for testing purposes only. To get started, you will want to add one or more podcasts, and trigger the import functions using the Function emulator.
