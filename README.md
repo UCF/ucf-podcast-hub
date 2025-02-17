@@ -17,9 +17,8 @@ The UCF Podcast Hub project is a Firebase-backed React project for aggregating a
 
 1. Clone the project into your desired dev directory and cd into the directory: `git clone git@github.com:UCF/ucf-podcast-hub.git` - `cd ucf-podcast-hub`.
 2. Ensure you're running Node 18. If using nvm, install and/or switch to 18: `nvm install 18 && nvm use 18`.
-3. Install dependencies: `npm install`.
-4. Select the develop project - this is necessary for the emulators to work correctly - by running the command: `npm run activate:dev`.
-5. Start the development server by running `npm run dev`. This will run the project in watch mode, rebuilding the project whenever a file changes.
+3. Run the first time setup script: `npm run fts`. This will install all dependencies, setup the project, and build everything.
+4. Start the development server by running `npm run dev`. This will run the project in watch mode, rebuilding the project whenever a file changes.
 
 ## Local Data
 
