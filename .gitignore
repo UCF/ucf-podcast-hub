@@ -14,7 +14,7 @@ dist-ssr
 .env
 
 localdata/*
-!localdata/.gitignore
+!localdata/.gitkeep
 
 # Editor directories and files
 .vscode/*
