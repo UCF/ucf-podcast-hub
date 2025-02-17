@@ -1,6 +1,6 @@
 # UCF Podcast Hub
 
-The UCF Podcast Hub project is a Firebase-backed React project for aggregating and displaying podcast content created at the University of Central Florida. It utilizes various Firebase components to store the podcast data, allow access for administrators to edit certain pieces of information, and caches the show images and audio files. To run this project locally, you can take advantage of the `firebase-tools` package included in the developer dependencies to emulate the Firebase products. However, you want to run this on Firebase, you will need to create a project and activate the following features:
+The UCF Podcast Hub project is a Firebase-backed React project for aggregating and displaying podcast content created at the University of Central Florida. It utilizes various Firebase components to store the podcast data, allow access for administrators to edit certain pieces of information, and caches the show images and audio files. To run this project locally, you can take advantage of the `firebase-tools` package included in the developer dependencies to emulate the Firebase products. However, if you want to run this on Firebase, you will need to create a project and activate the following features:
 
 - Authentication
 - Firestore
