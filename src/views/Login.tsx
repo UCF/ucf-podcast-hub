@@ -4,7 +4,7 @@ import { auth } from "../firebase";
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
 import './Login.scss';
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 function LoginView() {
     const [username, setUsername] = useState<string>("");
@@ -12,6 +12,10 @@ function LoginView() {
     const [error, setError] = useState<string>("");
 
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const queryParams = new URLSearchParams(location.search);
+    const nextUrl = queryParams.get('next') || '/';
 
     const SignInWithEmail = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -25,7 +29,7 @@ function LoginView() {
             username,
             password
         ).then(() => {
-            navigate('/');
+            navigate(nextUrl);
         }).catch(err => {
             setError(err.message);
         });
