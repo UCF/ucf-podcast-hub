@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite & firebase emulators:start --import=./localdata",
+    "activate:dev": "firebase use develop",
+    "activate:test": "firebase use test",
+    "fts": "npm install && npm run activate:dev && npm run build",
     "build": "tsc -b && vite build && npm run build:functions",
     "build:functions": "(cd functions && npm ci && npm run build)",
     "lint": "eslint .",
