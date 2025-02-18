@@ -8,7 +8,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
 function ShowView() {
-  const {show} = useParams();
+  const { show } = useParams();
   const [showData, setShowData] = useState<PodcastShow>();
 
   useEffect(() => {
@@ -40,8 +40,8 @@ function ShowView() {
                 to={{
                   pathname: "/" + show + "/" + episode.slug
                 }}>
-                  {episode.title}
-                </Link>
+                {episode.title}
+              </Link>
             </li>
           )
         })}
