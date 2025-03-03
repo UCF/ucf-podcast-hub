@@ -26,11 +26,11 @@ function HomeView() {
     <div className='container'>
       <h1>Home</h1>
       <ul>
-      {shows?.map(show => (
-        <li key={show.slug}>
-          <Link to={{ pathname: "/" + show.slug }}>{show.name}</Link>
-        </li>
-      ))}
+        {shows?.map(show => (
+          <li key={show.slug}>
+            <Link to={{ pathname: "/" + show.slug }}>{show.name}</Link>
+          </li>
+        ))}
       </ul>
     </div>
   )

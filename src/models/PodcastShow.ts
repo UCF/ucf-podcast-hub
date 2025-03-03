@@ -14,4 +14,4 @@ interface PodcastShow {
   episodes: PodcastEpisodeReference[]
 }
 
-export default  PodcastShow;
+export default PodcastShow;
