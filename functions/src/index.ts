@@ -8,7 +8,7 @@
  */
 
 import { onCall } from "firebase-functions/v2/https";
-import { onSchedule } from "firebase-functions/v2/scheduler";
+// import { onSchedule } from "firebase-functions/v2/scheduler";
 
 import { podcastImport } from "./podcastImport";
 import { addNewShow } from "./addNewShow";
@@ -28,6 +28,6 @@ export const addShow = onCall(async (request) => {
   await addNewShow(url, slug);
 });
 
-export const importPodcastEpisodes = onSchedule( "every day 17:00", async (event) => {
+export const importPodcastEpisodes = onCall(async (request) => {
   await podcastImport();
 });
