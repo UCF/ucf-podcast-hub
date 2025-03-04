@@ -30,7 +30,7 @@ export const addShow = onCall(async (request) => {
   await addNewShow(url, slug);
 });
 
-export const importPodcastEpisodes = onRequest(async (request) => {
+export const importPodcastEpisodes = onCall(async (request) => {
   await podcastImport();
 });
 
