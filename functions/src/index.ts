@@ -12,6 +12,8 @@ import { onCall } from "firebase-functions/v2/https";
 
 import { podcastImport } from "./podcastImport";
 import { addNewShow } from "./addNewShow";
+import { FirestoreEvent, onDocumentCreated, QueryDocumentSnapshot } from "firebase-functions/firestore";
+import { getTranscript } from "./pullTranscript";
 
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
@@ -30,4 +32,11 @@ export const addShow = onCall(async (request) => {
 
 export const importPodcastEpisodes = onCall(async (request) => {
   await podcastImport();
+});
+
+export const getTranscriptOnCreate = onDocumentCreated(
+  'episodes/{docId}',
+  async (event: FirestoreEvent<QueryDocumentSnapshot | undefined, { docId: string}>) =>
+{
+  await getTranscript(event!.document);
 });

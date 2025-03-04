@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite & firebase emulators:start --import=./localdata",
+    "dev": "firebase emulators:start --import=./localdata & vite",
     "activate:dev": "firebase use develop",
     "activate:test": "firebase use test",
     "fts": "npm install && npm run activate:dev && npm run build",

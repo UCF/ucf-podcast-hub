@@ -1,11 +1,17 @@
 import { initializeApp } from "firebase-admin";
+import { getApp } from "firebase-admin/app";
 import { DocumentData, Firestore, getFirestore } from "firebase-admin/firestore";
 import { logger } from "firebase-functions/v2";
 import slugify from "slugify";
 import { Parser } from "xml2js";
 
 export const podcastImport = async () => {
-  const app = initializeApp();
+  let app;
+    try {
+      app = getApp();
+    } catch {
+      app = initializeApp();
+    }
   const db = getFirestore(app);
 
   const showsRef = db.collection('shows');
@@ -20,29 +26,29 @@ export const podcastImport = async () => {
 
 const processShow = async (doc: DocumentData, db: Firestore) => {
   const showData = doc.data();
-    const feedUrl = showData.feedUrl;
-  
-    const resp = await fetch(feedUrl);
-    if (!resp.ok) return;
-  
-    const parser = new Parser();
-    const data = await parser.parseStringPromise(await resp.text());
-  
-    const channel = data.rss.channel[0];
-    const episodes = channel.item;
-  
-    if (!episodes) return;
-  
-    const epRefs = [];
-  
-    for (const episode of episodes) {
-      const epRef = await addEpisode(episode, doc, db);
-      logger.log("Added new episode!");
-      epRefs.push(epRef);
-    }
-  
-    showData.episodes = epRefs;
-    await db.collection('shows').doc(showData.slug).set(showData);
+  const feedUrl = showData.feedUrl;
+
+  const resp = await fetch(feedUrl);
+  if (!resp.ok) return;
+
+  const parser = new Parser();
+  const data = await parser.parseStringPromise(await resp.text());
+
+  const channel = data.rss.channel[0];
+  const episodes = channel.item;
+
+  if (!episodes) return;
+
+  const epRefs = [];
+
+  for (const episode of episodes) {
+    const epRef = await addEpisode(episode, doc, db);
+    logger.log("Added new episode!");
+    epRefs.push(epRef);
+  }
+
+  showData.episodes = epRefs;
+  await db.collection('shows').doc(showData.slug).set(showData);
 };
 
 const addEpisode = async (episode: any, doc: DocumentData, db: Firestore) => {
@@ -72,7 +78,7 @@ const addEpisode = async (episode: any, doc: DocumentData, db: Firestore) => {
   };
 
   let epRef = await db.collection('episodes').doc(obj.slug);
-  
+
   await db.collection('episodes').doc(obj.slug).set(obj);
   epRef = await db.collection('episodes').doc(obj.slug);
 
