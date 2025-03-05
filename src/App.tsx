@@ -3,7 +3,7 @@ import './App.scss'
 import { BrowserRouter, Routes, Route } from 'react-router';
 
 import HomeView from './views/HomeView';
-import ShowView  from './views/ShowView';
+import ShowView from './views/ShowView';
 import EpisodeView from './views/EpisodeView';
 import LoginView from './views/Login';
 import DashboardView from './views/admin/DashboardView';

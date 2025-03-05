@@ -9,7 +9,7 @@ import { db } from '../firebase';
 import showdown from 'showdown';
 
 function EpisodeView() {
-  const {episode} = useParams();
+  const { episode } = useParams();
   const [episodeData, setEpisodeData] = useState<PodcastEpisode>();
 
   const converter = new showdown.Converter();
@@ -49,7 +49,7 @@ function EpisodeView() {
           <dd><ul className='list-unstyled'>
             {episodeData.tags.map(tag => (
               <li key={tag}>{tag}</li>
-          ))}</ul></dd>
+            ))}</ul></dd>
           <dt>Transcript</dt>
           <dd>{parse(episodeData.transcript)}</dd>
         </dl>
