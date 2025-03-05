@@ -39,10 +39,18 @@ function EpisodeView() {
           <dd>{episodeData.episode}</dd>
           <dt>Episode Type</dt>
           <dd>{episodeData.episodeType}</dd>
-          <dt>Description</dt>
-          <dd>{parse(episodeData.description)}</dd>
-          <dt>Key Moments</dt>
-          <dd>{parse(converter.makeHtml(episodeData.keyMoments))}</dd>
+          {episodeData.description !== null && (
+            <>
+              <dt>Description</dt>
+              <dd>{parse(episodeData.description)}</dd>
+            </>
+          )}
+          {episodeData.keyMoments && (
+            <>
+              <dt>Key Moments</dt>
+              <dd>{parse(converter.makeHtml(episodeData.keyMoments))}</dd>
+            </>
+          )}
           <dt>Publish Date</dt>
           <dd>{new Date(episodeData.pubDate).toLocaleDateString()}</dd>
           <dt>Tags</dt>
@@ -50,8 +58,12 @@ function EpisodeView() {
             {episodeData.tags.map(tag => (
               <li key={tag}>{tag}</li>
             ))}</ul></dd>
-          <dt>Transcript</dt>
-          <dd>{parse(episodeData.transcript)}</dd>
+            {episodeData.transcript && (
+              <>
+                <dt>Transcript</dt>
+                <dd>{parse(episodeData.transcript)}</dd>
+              </>
+            )}
         </dl>
       )}
     </div>
