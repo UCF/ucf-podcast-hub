@@ -1,6 +1,5 @@
-import { initializeApp } from "firebase-admin";
 import { getFirestore } from "firebase-admin/firestore";
-import { getApp } from "firebase-admin/app";
+import { getApp, initializeApp } from "firebase-admin/app";
 
 import mammoth = require("mammoth");
 

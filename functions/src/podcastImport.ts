@@ -1,5 +1,4 @@
-import { initializeApp } from "firebase-admin";
-import { getApp } from "firebase-admin/app";
+import { getApp, initializeApp } from "firebase-admin/app";
 import { DocumentData, Firestore, getFirestore } from "firebase-admin/firestore";
 import { logger } from "firebase-functions/v2";
 import slugify from "slugify";
