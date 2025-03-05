@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
 import './ShowView.scss'
 
 import { useParams } from 'react-router'
 import PodcastShow from '../models/PodcastShow';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import EpisodeCard from '../components/EpisodeCard';
 
 function ShowView() {
   const { show } = useParams();
@@ -32,20 +32,11 @@ function ShowView() {
       </div>
       <p>{showData?.description}</p>
       <h2>Episodes</h2>
-      <ul>
-        {showData?.episodes.map(episode => {
-          return (
-            <li key={episode.slug}>
-              <Link
-                to={{
-                  pathname: "/" + show + "/" + episode.slug
-                }}>
-                {episode.title}
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
+      {showData?.episodes.map(episode => {
+        return (
+          <EpisodeCard key={episode.slug} slug={episode.slug} showData={showData} cardClasses='mb-4' />
+        )
+      })}
     </div>
   )
 }
