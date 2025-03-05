@@ -21,6 +21,7 @@ export const podcastImport = async () => {
   });
 
   logger.log("All done importing episodes!");
+  return;
 };
 
 const processShow = async (doc: DocumentData, db: Firestore) => {
