@@ -7,7 +7,7 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-import { onCall, onRequest } from "firebase-functions/v2/https";
+import { onCall } from "firebase-functions/v2/https";
 // import { onSchedule } from "firebase-functions/v2/scheduler";
 
 import { podcastImport } from "./podcastImport";
